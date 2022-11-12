@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Resources:
+  TheDynamoTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      KeySchema:
+      - {AttributeName: "HashKey", KeyType: "HASH"}
+      - {AttributeName: "FullPath", KeyType: "RANGE"}
+
+      ProvisionedThroughput: {ReadCapacityUnits: 20, WriteCapacityUnits: 20}
+      AttributeDefinitions:
+      - {AttributeName: "HashKey", AttributeType: "S"}
+      - {AttributeName: "FullPath", AttributeType: "S"}
+      # PointInTimeRecoverySpecification:
+      #   PointInTimeRecoveryEnabled: true
+      TableName: 'Zippity-Boopity'
